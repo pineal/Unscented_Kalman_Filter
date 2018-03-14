@@ -23,7 +23,7 @@ public:
   * A helper method to calculate RMSE.
   */
   static VectorXd CalculateRMSE(const vector<VectorXd> &estimations, const vector<VectorXd> &ground_truth);
-  static void Normalize(VectorXd & v, int index);
+  static void Normalize(double & v);
 
 };
 
