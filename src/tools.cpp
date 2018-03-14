@@ -11,10 +11,6 @@ Tools::~Tools() {}
 
 VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
                               const vector<VectorXd> &ground_truth) {
-  /**
-  TODO:
-    * Calculate the RMSE here.
-  */
   VectorXd rmse(4);
 	rmse << 0, 0, 0, 0;
 
@@ -33,3 +29,7 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
 	rmse = rmse.array().sqrt();
 	return rmse;
 }
+
+void Tools::Normalize(VectorXd & v, int index) {
+	v(index) -= static_cast<int>(v(index) / (2 * M_PI)) / (2 * M_PI);
+};

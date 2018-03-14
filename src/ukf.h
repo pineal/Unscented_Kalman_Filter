@@ -5,12 +5,13 @@
 #include "Eigen/Dense"
 #include <vector>
 #include <string>
+#include "tools.h"
 #include <fstream>
 
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
 
-const double EPS = 0.001;
+const double COV_THREAD = 0.001;
 
 class UKF {
 public:
@@ -69,6 +70,7 @@ public:
   ///* Sigma point spreading parameter
   double lambda_;
 
+  //NIS for radar and lidar
   double NIS_radar_;
   double NIS_lidar_;
 
@@ -108,11 +110,7 @@ public:
   void UpdateRadar(MeasurementPackage meas_package);
 
 private:
-  void Normalize(double & y);
-  MatrixXd GenerateSigmaPoints(VectorXd x, MatrixXd P, double lambda, int n);
-  MatrixXd PredictSigmaPoints(MatrixXd Xsig, double delta_t, int n_x, int n_sig, double nu_am, double nu_yawdd);
 
-  size_t sigs_size;
 };
 
 #endif /* UKF_H */
